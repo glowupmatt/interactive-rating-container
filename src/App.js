@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ThankYou from "./ThankYou";
+import ForumPage from "./ForumPage";
+import { data } from "./ratingData";
+import "./App.css";
 
 function App() {
+  const [rating, setRating] = useState(0);
+  const [page, setPage] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {page === false ? (
+        <ForumPage
+          page={page}
+          setPage={setPage}
+          rating={rating}
+          setRating={setRating}
+        />
+      ) : (
+        <ThankYou rating={rating} setRating={setRating} />
+      )}
     </div>
   );
 }
